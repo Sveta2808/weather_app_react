@@ -26,17 +26,38 @@ function TemperatureAndDetails() {
                         <span className='font-medium ml-1'>32°</span>
                     </div>
                     <div className='flex font-light text-sm items-center justify-center'>
-                        <UilTemperature size={18} className='mr-1'/>
+                        <UilTear size={18} className='mr-1'/>
                         Humidity:
-                        <span className='font-medium ml-1'>32°</span>
+                        <span className='font-medium ml-1'>65%</span>
                     </div>
                     <div className='flex font-light text-sm items-center justify-center'>
-                        <UilTemperature size={18} className='mr-1'/>
-                        Wind speed:
-                        <span className='font-medium ml-1'>32°</span>
+                        <UilWind size={18} className='mr-1'/>
+                        Wind:
+                        <span className='font-medium ml-1'>11 km/h</span>
                     </div>
                 </div>
             </div>
+            <div className='flex flex-row items-center justify-center space-x-2 text-white text-sm py-3'>
+
+                <UilSun/>
+                <p className='font-light'> Rise: <span className='font-medium ml-1'>06:45AM</span></p>
+                <p className='font-light'>|</p>
+
+                <UilSunset/>
+                <p className='font-light'> Rise: <span className='font-medium ml-1'>07:35PM</span></p>
+                <p className='font-light'>|</p>
+
+                <UilSun/>
+                <p className='font-light'> High: <span className='font-medium ml-1'>45°</span></p>
+                <p className='font-light'>|</p>
+
+                <UilSun/>
+                <p className='font-light'> Low: <span className='font-medium ml-1'>40°</span></p>
+                
+            </div>
+
+
+
         </div>
     )
 }
