@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 
 
 const API_KEY = '0fed4bc63aa936c1dc865859bfae86be';
-const BASE_URL = 'https://api.openweathermap.org/data/3.0'
+const BASE_URL = 'https://api.openweathermap.org/data/2.5'
 
 const getWeatherData = (infoType, searchParams) => {
 
@@ -16,14 +16,13 @@ const getWeatherData = (infoType, searchParams) => {
 
 const formatCurrentWeather = (data) => {
     const {
-        lat,
-        lon,
-        current: { dt, temp, feels_like, humidity,sunrise, sunset, wind_speed },
+        coord: { lat, lon },
+        main: { temp, feels_like, temp_min, temp_max, humidity },
         name,
-
-        sys: { country,  },
+        dt,
+        sys: { country, sunrise, sunset },
         weather,
-        wind: { speed }
+        wind: { speed },
 
     } = data
 
@@ -55,7 +54,7 @@ const formatForecastWeather = (data) => {
 
 const getFormattedWeatherData = async (searchParams) => {
 
-    const formattedCurrentWeather = await getWeatherData('onecall', searchParams).then(formatCurrentWeather);
+    const formattedCurrentWeather = await getWeatherData('weather', searchParams).then(formatCurrentWeather);
     const { lat, lon } = formattedCurrentWeather
     const formattedForecastWeather = await getWeatherData('onecall', {
         lat,
@@ -64,20 +63,20 @@ const getFormattedWeatherData = async (searchParams) => {
         units: searchParams.units
     }).then(formatForecastWeather)
 
-    return { ...formattedCurrentWeather, ...formattedForecastWeather }
+    return {...formattedCurrentWeather, ...formattedForecastWeather}
 
 }
 
 const formatToLocalTime = (
-    secs,
-    zone,
+    secs, 
+    zone, 
     format = "cccc, dd LLL yyyy' | Local time :' hh:mm a"
+    
+    ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
-) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
-
-const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
-
+    const iconUrlFromCode = (code) =>`http://openweathermap.org/img/wn/${code}@2x.png`;
+    
 
 export default getFormattedWeatherData;
 
-export { formatToLocalTime, iconUrlFromCode };
+export {formatToLocalTime, iconUrlFromCode};
