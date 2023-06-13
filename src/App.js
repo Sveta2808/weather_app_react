@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [query, setQuery] = useState({ q: 'berlin' })
-  const [units, setUnits] = useState('metric')
+  const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null)
 
   useEffect(() => {
@@ -25,12 +25,20 @@ function App() {
     fetchWeather();
   }, [query, units]);
 
+  const formatBackground = () => {
+    if (!weather) return "from-cyan-700 to-blue-700 ";
+    const treshold = units === "metric" ? 20 : 60;
+    if (weather.temp <= treshold) return "from-cyan-700 to-blue-700";
+
+    return "from-yellow-700 to-orange-700 ";
+  }
+
 
 
 
 
   return (
-    <div className="mx-auto max-w-screen-md mt4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400">
+    <div className={`mx-auto max-w-screen-md mt4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
       <TopButtons setQuery = {setQuery} />
       <Inputs setQuery ={setQuery} units={units} setUnits={setUnits} />
 
