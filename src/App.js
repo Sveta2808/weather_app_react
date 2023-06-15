@@ -33,27 +33,31 @@ function App() {
     return "from-yellow-700 to-orange-700 ";
   }
 
-  // const formatClothes = () => {
-  //   let imagePath = "";
-  //   if (!weather) { imagePath = "/Images/t-shirt_shorts.png"; }
-  //   const treshold = units === "metric" ? 20 : 60;
-  //   if (weather.temp <= treshold) {
-  //     imagePath = "/Images/sportswear.png";}
+  const formatClothes = () => {
+    if (!weather) return "/images/t-shirt_shorts.png";
 
-  //   return  imagePath = "/Images/t-shirt_shorts.png"; 
-  // }
-
-
-
-
-
+    if (weather.temp > 20) {
+      return "/images/t-shirt_shorts.png";
+    } else if (weather.temp > 15) {
+      return "/images/sportswear.png";
+    } else if (weather.temp > 5) {
+      return "/images/jacket.png";
+    } else if (weather.temp > 0) {
+      return "/images/down_jacket.png"
+    } else {
+      return "/images/t-shirt_shorts.png";
+    }
+  }
 
 
   return (
     <div className={`mx-auto max-w-screen-md mt4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
-      {/* <div className="bg-[url('../images/t-shirt_shorts.png)]"> </div> */}
+      <img src={`${formatClothes()}`}
+        alt=""
+        className='w-20 m-auto'
+      />
 
       {weather && (
         <div>
