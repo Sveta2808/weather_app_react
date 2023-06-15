@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
     UilArrowUp,
     UilArrowDown,
@@ -13,6 +14,9 @@ import { formatToLocalTime, iconUrlFromCode } from '../services/weatherService';
 function TemperatureAndDetails({ weather: {
     details, icon, temp, temp_min, temp_max, sunrise, sunset, speed, humidity, feels_like, timezone
 } }) {
+
+
+
     return (
         <div>
             <div className='flex items-center justify-center py-6 text-xl text-cyan-300'>
@@ -24,6 +28,7 @@ function TemperatureAndDetails({ weather: {
                     alt=""
                     className='w-20'
                 />
+
                 <p className='text-5xl'>{`${temp.toFixed()}°`}</p>
                 <div className='flex flex-col space-y-2'>
                     <div className='flex font-light text-sm items-center justify-center'>

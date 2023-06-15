@@ -33,6 +33,16 @@ function App() {
     return "from-yellow-700 to-orange-700 ";
   }
 
+  // const formatClothes = () => {
+  //   let imagePath = "";
+  //   if (!weather) { imagePath = "/Images/t-shirt_shorts.png"; }
+  //   const treshold = units === "metric" ? 20 : 60;
+  //   if (weather.temp <= treshold) {
+  //     imagePath = "/Images/sportswear.png";}
+
+  //   return  imagePath = "/Images/t-shirt_shorts.png"; 
+  // }
+
 
 
 
@@ -43,6 +53,7 @@ function App() {
     <div className={`mx-auto max-w-screen-md mt4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+      {/* <div className="bg-[url('../images/t-shirt_shorts.png)]"> </div> */}
 
       {weather && (
         <div>
