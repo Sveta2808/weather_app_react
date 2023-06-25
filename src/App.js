@@ -10,6 +10,23 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setData(result);
+
+        },
+        (error) => {
+
+        }
+      )
+  }, []);
+
+
   const [query, setQuery] = useState({ q: 'berlin' })
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null)
