@@ -12,6 +12,7 @@ function Inputs({ setQuery, units, setUnits }) {
 
     const handleSearchClick = () => {
         if (city !== '') setQuery({ q: city });
+        setCity ('');
     };
 
     const handleLocationClick = () => {
@@ -45,7 +46,7 @@ function Inputs({ setQuery, units, setUnits }) {
                     onClick={handleSearchClick}
                 />
                 <UilLocationPoint size={25} className='text-white cursor-pointer transition ease-out hover:scale-125'
-                onClick={handleLocationClick}
+                    onClick={handleLocationClick}
                 />
             </div>
 

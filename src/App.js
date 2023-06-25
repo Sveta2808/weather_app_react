@@ -61,6 +61,8 @@ function App() {
       return "/images/jacket.png";
     } else if (weather.temp > 0) {
       return "/images/down_jacket.png"
+    } else if (weather.temp < 0) {
+      return "/images/eskimos.png"
     } else {
       return "/images/t-shirt_shorts.png";
     }
